@@ -1,0 +1,52 @@
+unit SysDebitoConta.Conversor.Trailler;
+
+interface
+
+uses
+  SysDebitoConta.Conversor.Interfaces,
+  System.Generics.Collections,
+  SysDebitoConta.RegistroDebitoConta;
+
+type
+  TConversorConteudoTraillerBancoDoBrasil = class(TInterfacedObject, IConversorConteudoTrailler)
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New : IConversorConteudoTrailler;
+    function SetListaRegistros(AValue : TObjectList<TRegistroDebito>) : IConversorConteudoTrailler;
+    function GetLinhaCompleta : string;
+  end;
+
+implementation
+
+{ TConversorConteudoTraillerBancoDoBrasil }
+
+constructor TConversorConteudoTraillerBancoDoBrasil.Create;
+begin
+
+end;
+
+destructor TConversorConteudoTraillerBancoDoBrasil.Destroy;
+begin
+
+  inherited;
+end;
+
+function TConversorConteudoTraillerBancoDoBrasil.GetLinhaCompleta: string;
+begin
+
+end;
+
+class function TConversorConteudoTraillerBancoDoBrasil.New: IConversorConteudoTrailler;
+begin
+  Result := Self.Create;
+end;
+
+function TConversorConteudoTraillerBancoDoBrasil.SetListaRegistros(
+  AValue: TObjectList<TRegistroDebito>): IConversorConteudoTrailler;
+begin
+
+end;
+
+end.

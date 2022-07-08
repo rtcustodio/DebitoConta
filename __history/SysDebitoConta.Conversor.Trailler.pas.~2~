@@ -1,0 +1,34 @@
+unit SysDebitoConta.Conversor.Trailler;
+
+interface
+
+type
+  TConversorConteudoTraillerBancoDoBrasil = class(TInterfacedObject, IConversorConteudoTrailler)
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New : IConversorConteudoTrailler;
+  end;
+
+implementation
+
+{ TConversorConteudoTraillerBancoDoBrasil }
+
+constructor TConversorConteudoTraillerBancoDoBrasil.Create;
+begin
+
+end;
+
+destructor TConversorConteudoTraillerBancoDoBrasil.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TConversorConteudoTraillerBancoDoBrasil.New: IConversorConteudoTrailler;
+begin
+  Result := Self.Create;
+end;
+
+end.

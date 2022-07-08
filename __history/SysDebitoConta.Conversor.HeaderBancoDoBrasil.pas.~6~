@@ -1,0 +1,251 @@
+unit SysDebitoConta.Conversor.HeaderBancoDoBrasil;
+
+interface
+
+uses
+  SysDebitoConta.Conversor.Interfaces,
+  System.SysUtils;
+
+type
+  TConversorStringParaConteudoHeaderBancoDoBrasil = class(TInterfacedObject, IConversorStringParaConteudoHeader)
+  private
+    FConteudoLinha : string;
+    F01 : string;
+    F02 : string;
+    F03 : string;
+    F04 : string;
+    F05 : string;
+    F06 : string;
+    F07 : string;
+    F08 : string;
+    F09 : string;
+    F10 : string;
+    F11 : string;
+    procedure InterpretarConteudoLinha;
+    procedure GerarConteudoLinha;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New : IConversorStringParaConteudoHeader;
+    function SetString( AValue : string ) : IConversorStringParaConteudoHeader;
+    function Get01 : string;
+    function Get02 : string;
+    function Get03 : string;
+    function Get04 : string;
+    function Get05 : string;
+    function Get06 : string;
+    function Get07 : string;
+    function Get08 : string;
+    function Get09 : string;
+    function Get10 : string;
+    function Get11 : string;
+    function Set01 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set02 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set03 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set04 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set05 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set06 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set07 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set08 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set09 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set10 (AValue : string) : IConversorStringParaConteudoHeader;
+    function Set11 (AValue : string) : IConversorStringParaConteudoHeader;
+    function GetLinhaCompleta : string;
+  end;
+
+implementation
+
+{ TConversorStringParaConteudoHeaderBancoDoBrasil }
+
+constructor TConversorStringParaConteudoHeaderBancoDoBrasil.Create;
+begin
+
+end;
+
+destructor TConversorStringParaConteudoHeaderBancoDoBrasil.Destroy;
+begin
+
+  inherited;
+end;
+
+procedure TConversorStringParaConteudoHeaderBancoDoBrasil.GerarConteudoLinha;
+begin
+  FConteudoLinha :=
+    F01.PadRight(1, ' ') +
+    F02.PadRight(1, ' ') +
+    F03.PadRight(20, ' ') +
+    F04.PadRight(20, ' ') +
+    F05.PadRight(3, ' ') +
+    F06.PadRight(20, ' ') +
+    F07.PadRight(8, ' ') +
+    F08.PadRight(6, ' ') +
+    F09.PadRight(2, ' ') +
+    F10.PadRight(17, ' ') +
+    F11.PadRight(52, ' ') ;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get01: string;
+begin
+  Result := F01;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get02: string;
+begin
+  Result := F02;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get03: string;
+begin
+  Result := F03;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get04: string;
+begin
+  Result := F04;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get05: string;
+begin
+  Result := F05;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get06: string;
+begin
+  Result := F06;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get07: string;
+begin
+  Result := F07;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get08: string;
+begin
+  Result := F08;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get09: string;
+begin
+  Result := F09;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get10: string;
+begin
+  Result := F10;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Get11: string;
+begin
+  Result := F11;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.GetLinhaCompleta: string;
+begin
+  Result := FConteudoLinha;
+end;
+
+procedure TConversorStringParaConteudoHeaderBancoDoBrasil.InterpretarConteudoLinha;
+begin
+  F01 := FConteudoLinha.Substring(0, 1); //código do registro
+  F02 := FConteudoLinha.Substring(1, 1); //código de remessa
+  F03 := FConteudoLinha.Substring(2, 20); //código do convênio
+  F04 := FConteudoLinha.Substring(22, 20); //nome da empresa
+  F05 := FConteudoLinha.Substring(42, 3); //código do banco
+  F06 := FConteudoLinha.Substring(45, 20); //nome do banco
+  F07 := FConteudoLinha.Substring(65, 8); //data de geração
+  F08 := FConteudoLinha.Substring(73, 6); //numero sequencial do arquivo
+  F09 := FConteudoLinha.Substring(79, 1); //versão do layout
+  F10 := FConteudoLinha.Substring(81, 17); //identificação do serviço
+  F11 := FConteudoLinha.Substring(98, 52); //reservado
+end;
+
+class function TConversorStringParaConteudoHeaderBancoDoBrasil.New: IConversorStringParaConteudoHeader;
+begin
+  Result := Self.Create;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set01(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F01 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set02(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F02 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set03(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F03 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set04(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F04 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set05(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F05 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set06(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F06 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set07(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F07 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set08(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F08 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set09(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F09 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set10(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F10 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.Set11(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  F11 := AValue;
+end;
+
+function TConversorStringParaConteudoHeaderBancoDoBrasil.SetString(
+  AValue: string): IConversorStringParaConteudoHeader;
+begin
+  Result := Self;
+  FConteudoLinha := AValue;
+end;
+
+end.

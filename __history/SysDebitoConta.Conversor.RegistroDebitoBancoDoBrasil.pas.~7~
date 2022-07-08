@@ -1,0 +1,192 @@
+unit SysDebitoConta.Conversor.RegistroDebitoBancoDoBrasil;
+
+interface
+
+uses
+  SysDebitoConta.Conversor.Interfaces,
+  System.SysUtils;
+
+type
+  TConversorStringParaConteudoRegistroBancoDoBrasil = class(TInterfacedObject, IConversorStringParaConteudoRegistro)
+  private
+    FConteudoLinha : string;
+    F01 : string;
+    F02 : string;
+    F03 : string;
+    F04 : string;
+    F05 : string;
+    F06 : string;
+    F07 : string;
+    F08 : string;
+    F09 : string;
+    F10 : string;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New : IConversorStringParaConteudoRegistro;
+    function SetLinhaCompleta( AValue : string ) : IConversorStringParaConteudoRegistro;
+    function Get01 : string;
+    function Get02 : string;
+    function Get03 : string;
+    function Get04 : string;
+    function Get05 : string;
+    function Get06 : string;
+    function Get07 : string;
+    function Get08 : string;
+    function Get09 : string;
+    function Get10 : string;
+    function Set01 (AValue : string) : string;
+    function Set02 (AValue : string) : string;
+    function Set03 (AValue : string) : string;
+    function Set04 (AValue : string) : string;
+    function Set05 (AValue : string) : string;
+    function Set06 (AValue : string) : string;
+    function Set07 (AValue : string) : string;
+    function Set08 (AValue : string) : string;
+    function Set09 (AValue : string) : string;
+    function Set10 (AValue : string) : string;
+    function GetLinhaCompleta : string;
+  end;
+
+implementation
+
+{ TConversorStringParaConteudoRegistroBancoDoBrasil }
+
+constructor TConversorStringParaConteudoRegistroBancoDoBrasil.Create;
+begin
+
+end;
+
+destructor TConversorStringParaConteudoRegistroBancoDoBrasil.Destroy;
+begin
+
+  inherited;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get01: string;
+begin
+  Result := FConteudoLinha.Substring(0, 1); //código do registro
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get02: string;
+begin
+  Result := FConteudoLinha.Substring(1, 25); //identificação do cliente na empresa
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get03: string;
+begin
+  Result := FConteudoLinha.Substring(26, 4); //agência para débito
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get04: string;
+begin
+  Result := FConteudoLinha.Substring(30, 14); //identificação do cliente no banco
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get05: string;
+begin
+  Result := FConteudoLinha.Substring(44, 8); //data do vencimento
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get06: string;
+begin
+  Result := FConteudoLinha.Substring(52, 15); //valor do débito
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get07: string;
+begin
+  Result := FConteudoLinha.Substring(67, 2); //código da moeda
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get08: string;
+begin
+  Result := FConteudoLinha.Substring(69, 60); //uso da empresa
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get09: string;
+begin
+  Result := FConteudoLinha.Substring(129, 20); //brancos
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get10: string;
+begin
+  Result := FConteudoLinha.Substring(149, 1); //código do movimento
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.GetLinhaCompleta: string;
+begin
+
+end;
+
+class function TConversorStringParaConteudoRegistroBancoDoBrasil.New: IConversorStringParaConteudoRegistro;
+begin
+  Result := Self.Create;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set01(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set02(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set03(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set04(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set05(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set06(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set07(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set08(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set09(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set10(
+  AValue: string): string;
+begin
+
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.SetLinhaCompleta( AValue : string ) : IConversorStringParaConteudoRegistro;
+begin
+  Result := Self;
+  FConteudoLinha := AValue;
+end;
+
+end.

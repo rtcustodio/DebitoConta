@@ -1,0 +1,64 @@
+unit SysDebitoConta.Conversor.Interfaces;
+
+interface
+
+uses
+  SysDebitoConta.InformacoesDebitoConta;
+
+type
+  IConversorStringParaConteudoHeader = interface
+    ['{E3777729-F62A-44D9-A7F2-E55C1AC9464D}']
+    function SetLinhaCompleta( AValue : string ) : IConversorStringParaConteudoHeader;
+    function Get01 : string;
+    function Get02 : string;
+    function Get03 : string;
+    function Get04 : string;
+    function Get05 : string;
+    function Get06 : string;
+    function Get07 : string;
+    function Get08 : string;
+    function Get09 : string;
+    function Get10 : string;
+    function Get11 : string;
+    function SetInformacoesDebito (AValue : TInformacoesDebito) : IConversorStringParaConteudoHeader;
+    function GetLinhaCompleta : string;
+  end;
+
+  IConversorStringParaConteudoRegistro = interface
+    ['{31480FBA-C89C-437D-9CB7-952BF9336FFD}']
+    function SetLinhaCompleta( AValue : string ) : IConversorStringParaConteudoRegistro;
+    function Get01 : string;
+    function Get02 : string;
+    function Get03 : string;
+    function Get04 : string;
+    function Get05 : string;
+    function Get06 : string;
+    function Get07 : string;
+    function Get08 : string;
+    function Get09 : string;
+    function Get10 : string;
+    function Set01 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set02 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set03 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set04 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set05 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set06 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set07 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set08 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set09 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function Set10 (AValue : string) : IConversorStringParaConteudoRegistro;
+    function GetLinhaCompleta : string;
+  end;
+
+  IConversorStringParaConteudoTrailler = interface
+    ['{8DB40D5E-111C-40E4-9859-30599BABB0F7}']
+    function SetString( AValue : string ) : IConversorStringParaConteudoTrailler;
+    function Get01 : string;
+    function Get02 : string;
+    function Get03 : string;
+    function Get04 : string;
+  end;
+
+implementation
+
+end.

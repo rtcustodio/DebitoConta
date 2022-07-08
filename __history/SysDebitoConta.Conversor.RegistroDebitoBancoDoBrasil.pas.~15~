@@ -1,0 +1,242 @@
+unit SysDebitoConta.Conversor.RegistroDebitoBancoDoBrasil;
+
+interface
+
+uses
+  SysDebitoConta.Conversor.Interfaces,
+  System.SysUtils,
+  SysDebitoConta.RegistroDebitoConta,
+  SysDebitoConta.Utils;
+
+type
+  TConversorStringParaConteudoRegistroBancoDoBrasil = class(TInterfacedObject, IConversorConteudoRegistro)
+  private
+    FConteudoLinha : string;
+    F01 : string;
+    F02 : string;
+    F03 : string;
+    F04 : string;
+    F05 : string;
+    F06 : string;
+    F07 : string;
+    F08 : string;
+    F09 : string;
+    F10 : string;
+    function Set01 (AValue : string) : IConversorConteudoRegistro;
+    function Set02 (AValue : string) : IConversorConteudoRegistro;
+    function Set03 (AValue : string) : IConversorConteudoRegistro;
+    function Set04 (AValue : string) : IConversorConteudoRegistro;
+    function Set05 (AValue : string) : IConversorConteudoRegistro;
+    function Set06 (AValue : string) : IConversorConteudoRegistro;
+    function Set07 (AValue : string) : IConversorConteudoRegistro;
+    function Set08 (AValue : string) : IConversorConteudoRegistro;
+    function Set09 (AValue : string) : IConversorConteudoRegistro;
+    function Set10 (AValue : string) : IConversorConteudoRegistro;
+    procedure InterpretarConteudoLinha;
+    procedure GerarConteudoLinha;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New : IConversorConteudoRegistro;
+    function SetLinhaCompleta( AValue : string ) : IConversorConteudoRegistro;
+    function Get01 : string;
+    function Get02 : string;
+    function Get03 : string;
+    function Get04 : string;
+    function Get05 : string;
+    function Get06 : string;
+    function Get07 : string;
+    function Get08 : string;
+    function Get09 : string;
+    function Get10 : string;
+    function SetInformacoesDebito (AValue : TRegistroDebito) : IConversorConteudoRegistro;
+    function GetLinhaCompleta : string;
+  end;
+
+implementation
+
+{ TConversorStringParaConteudoRegistroBancoDoBrasil }
+
+constructor TConversorStringParaConteudoRegistroBancoDoBrasil.Create;
+begin
+
+end;
+
+destructor TConversorStringParaConteudoRegistroBancoDoBrasil.Destroy;
+begin
+
+  inherited;
+end;
+
+procedure TConversorStringParaConteudoRegistroBancoDoBrasil.GerarConteudoLinha;
+begin
+  FConteudoLinha :=
+    F01.PadRight(1, ' ') +
+    F02.PadRight(25, ' ') +
+    F03.PadRight(4, ' ') +
+    F04.PadRight(14, ' ') +
+    F05.PadRight(8, ' ') +
+    F06.PadRight(15, ' ') +
+    F07.PadRight(2, ' ') +
+    F08.PadRight(60, ' ') +
+    F09.PadRight(20, ' ') +
+    F10.PadRight(1, ' ');
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get01: string;
+begin
+  Result := F01;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get02: string;
+begin
+  Result := F02;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get03: string;
+begin
+  Result := F03;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get04: string;
+begin
+  Result := F04;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get05: string;
+begin
+  Result := F05;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get06: string;
+begin
+  Result := F06;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get07: string;
+begin
+  Result := F07;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get08: string;
+begin
+  Result := F08;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get09: string;
+begin
+  Result := F09;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Get10: string;
+begin
+  Result := F10;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.GetLinhaCompleta: string;
+begin
+  GerarConteudoLinha;
+  Result := FConteudoLinha;
+end;
+
+procedure TConversorStringParaConteudoRegistroBancoDoBrasil.InterpretarConteudoLinha;
+begin
+  F01 := FConteudoLinha.Substring(0, 1); //código do registro
+  F02 := FConteudoLinha.Substring(1, 25); //identificação do cliente na empresa
+  F03 := FConteudoLinha.Substring(26, 4); //agência para débito
+  F04 := FConteudoLinha.Substring(30, 14); //identificação do cliente no banco
+  F05 := FConteudoLinha.Substring(44, 8); //data do vencimento
+  F06 := FConteudoLinha.Substring(52, 15); //valor do débito
+  F07 := FConteudoLinha.Substring(67, 2); //código da moeda
+  F08 := FConteudoLinha.Substring(69, 60); //uso da empresa
+  F09 := FConteudoLinha.Substring(129, 20); //brancos
+  F10 := FConteudoLinha.Substring(149, 1); //código do movimento
+end;
+
+class function TConversorStringParaConteudoRegistroBancoDoBrasil.New: IConversorConteudoRegistro;
+begin
+  Result := Self.Create;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set01(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F01 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set02(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F02 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set03(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F03 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set04(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F04 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set05(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F05 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set06(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F06 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set07(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F07 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set08(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F08 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set09(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F09 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.Set10(AValue : string) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  F10 := AValue;
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.SetInformacoesDebito(AValue : TRegistroDebito) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  Set01('E');
+  Set02( AValue.IdentificacaoClienteEmpresa );
+  Set03( AValue.AgenciaDebito );
+  Set04( AValue.IdentificacaoClienteBanco );
+  Set05( FormatDateTIme('yyyymmdd', AValue.DataVencimento) );
+  Set06( DoubleToStrApenasNumeros(AValue.ValorDebito) );
+  Set07( AValue.CodigoMoeda );
+  Set08( AValue.UsoEmpresa );
+  Set10('0');
+end;
+
+function TConversorStringParaConteudoRegistroBancoDoBrasil.SetLinhaCompleta( AValue : string ) : IConversorConteudoRegistro;
+begin
+  Result := Self;
+  FConteudoLinha := AValue;
+  InterpretarConteudoLinha;
+end;
+
+end.

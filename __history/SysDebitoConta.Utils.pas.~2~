@@ -1,0 +1,19 @@
+unit SysDebitoConta.Utils;
+
+interface
+
+  function Date_AAAAMMDD_ToDate : TDate;
+
+implementation
+
+uses
+  System.SysUtils;
+
+function Date_AAAAMMDD_ToDate : TDate;
+var
+  Ano, Mes, Dia : string;
+begin
+  EncodeDate();
+end;
+
+end.

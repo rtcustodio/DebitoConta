@@ -1,0 +1,22 @@
+unit SysDebitoConta.Utils;
+
+interface
+
+  function Date_AAAAMMDD_ToDate(ADate: string) : TDate;
+
+implementation
+
+uses
+  System.SysUtils;
+
+function Date_AAAAMMDD_ToDate (ADate: string) : TDate;
+var
+  Ano, Mes, Dia : word;
+begin
+  Ano := Copy(ADate, 1, 4).ToInteger;
+  Mes := Copy(ADate, 5, 2).ToInteger;
+  Dia := Copy(ADate, 7, 2).ToInteger;
+  Result := EncodeDate(Ano, Mes, Dia);
+end;
+
+end.
