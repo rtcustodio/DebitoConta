@@ -36,8 +36,8 @@ end;
 function DoubleToStrApenasNumeros(AValue : double) : string;
 begin
   Result := AValue.ToString;
-  Result := Result.Replace('.', '');
-  Result := Result.Replace(',', '');
+  Result.Replace('.', '');
+  Result.Replace(',', '');
 end;
 
 end.

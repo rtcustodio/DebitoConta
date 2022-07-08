@@ -73,13 +73,13 @@ procedure TConversorConteudoHeaderBancoDoBrasil.GerarConteudoLinha;
 begin
   FConteudoLinha :=
     F01.PadRight(1, ' ') +
-    F02.PadLeft(1, '0') +
+    F02.PadRight(1, ' ') +
     F03.PadRight(20, ' ') +
     F04.PadRight(20, ' ') +
-    F05.PadLeft(3, '0') +
+    F05.PadRight(3, ' ') +
     F06.PadRight(20, ' ') +
     F07.PadRight(8, ' ') +
-    F08.PadLeft(6, '0') +
+    F08.PadRight(6, ' ') +
     F09.PadRight(2, ' ') +
     F10.PadRight(17, ' ') +
     F11.PadRight(52, ' ') ;
@@ -255,7 +255,7 @@ begin
   Set07( FormatDateTime('yyyymmdd', AValue.DataGeracao) );
   Set08(AValue.NumeroSequencial.ToString);
   Set09('04');
-  Set10('DEBITO AUTOMATICO');
+  Set10('DEBITO AUTOMÁTICO');
 end;
 
 function TConversorConteudoHeaderBancoDoBrasil.SetLinhaCompleta(

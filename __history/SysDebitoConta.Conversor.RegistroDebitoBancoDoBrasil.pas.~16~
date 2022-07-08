@@ -76,7 +76,7 @@ begin
     F03.PadRight(4, ' ') +
     F04.PadRight(14, ' ') +
     F05.PadRight(8, ' ') +
-    F06.PadLeft(15, '0') +
+    F06.PadRight(15, ' ') +
     F07.PadRight(2, ' ') +
     F08.PadRight(60, ' ') +
     F09.PadRight(20, ' ') +
